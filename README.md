@@ -1,0 +1,1 @@
+Docker-maven-plugin docs https://dmp.fabric8.io/#introduction
