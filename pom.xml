@@ -56,5 +56,33 @@
 			</plugin>
 		</plugins>
 	</build>
+	<profiles>
+		<profile>
+			<id>build-image</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>io.fabric8</groupId>
+						<artifactId>docker-maven-plugin</artifactId>
+						<version>0.40.3</version>
+						<configuration>
+							<images>
+								<image>
+									<alias>node0-istio-app</alias>
+									<name>viktorvx/node0-istio-app:${project.version}</name>
+									<build>
+										<from>openjdk:17-jdk-slim</from>
+										<cmd>
+											<shell>java</shell>
+										</cmd>
+									</build>
+								</image>
+							</images>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 
 </project>
