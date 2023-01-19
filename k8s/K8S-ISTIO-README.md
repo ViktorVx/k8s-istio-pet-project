@@ -17,3 +17,11 @@ Create service for deployment
 ```shell
 kubectl expose deployment k8s-istio-pet-project --type=LoadBalancer --port=8081
 ```
+### Istio
+#### Install istio to minikube https://istio.io/latest/docs/setup/getting-started/#bookinfo
+
+### Deploy app to k8s+istio
+Apply configs
+```shell
+kubectl apply -f k8s-istio-pet-project.yaml 
+```
