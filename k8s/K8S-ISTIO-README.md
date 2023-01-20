@@ -23,5 +23,7 @@ kubectl expose deployment k8s-istio-pet-project --type=LoadBalancer --port=8081
 ### Deploy app to k8s+istio
 Apply configs
 ```shell
+kubectl config set-context --current --namespace=k8s-istio-pet-project-ns
+kubectl label namespace k8s-istio-pet-project-ns istio-injection=enabled
 kubectl apply -f k8s-istio-pet-project.yaml 
 ```
