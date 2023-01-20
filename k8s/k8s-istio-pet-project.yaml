@@ -47,6 +47,21 @@ spec:
       name: http
   selector:
     app: k8s-istio-pet-project
+---
+apiVersion: networking.istio.io/valpha3
+kind: Gateway
+metadata:
+  name: k8s-istio-pet-project-gw
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+    - port:
+        number: 80
+        name: http
+        protocol: HTTP
+      hosts:
+        - "*"
 ##################################################################################################
 # Ratings service
 ##################################################################################################
