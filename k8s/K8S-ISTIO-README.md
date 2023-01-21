@@ -26,4 +26,14 @@ Apply configs
 kubectl config set-context --current --namespace=k8s-istio-pet-project-ns
 kubectl label namespace k8s-istio-pet-project-ns istio-injection=enabled
 kubectl apply -f k8s-istio-pet-project.yaml 
+kubectl get svc istio-ingressgateway -n istio-system
+export INGRESS_HOST=$(kubectl -n istio-system get service istio-ingressgateway -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
+export INGRESS_PORT=$(kubectl -n istio-system get service istio-ingressgateway -o jsonpath='{.spec.ports[?(@.name=="http2")].port}')
+export GATEWAY_URL=$INGRESS_HOST:$INGRESS_PORT
+echo $GATEWAY_URL
+curl -v http://$GATEWAY_URL/hello-world/hello
+```
+Hint! Open access from system to istio https://minikube.sigs.k8s.io/docs/handbook/accessing/#using-minikube-tunnel
+```shell
+minikube tunnel
 ```
